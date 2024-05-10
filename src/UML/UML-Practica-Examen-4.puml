@@ -1,0 +1,93 @@
+@startuml
+
+class Vista {
+    - Controlador controlador
+    - JTextArea textArea1
+    - JTextArea textArea2
+    - JFrame frame
+    - JButton btnCuentaAtras
+    - JButton btnCuentaInfinito
+    + Vista()
+    + void show()
+    + JButton getBtnCuentaAtras()
+    + JButton getBtnCuentaInfinito()
+    + void actualizarVista1(String mensaje)
+    + void initControlador(Modelo modelo)
+    + Controlador getControlador()
+    + void setTextArea2(String text)
+}
+
+class Controlador {
+    - Modelo modelo
+    - Vista vista
+    + Controlador(Modelo modelo, Vista vista)
+    + void ejecutarCuentaAtras()
+    + void ejecutarCuentaInfinito()
+    + void actualizarVista1(String mensaje)
+    + void actualizarVista2(String mensaje)
+    + void setModelo(Modelo modelo)
+    + void setVista(Vista vista)
+}
+
+class Modelo {
+    - Controlador controlador
+    - Vista vista
+    + Modelo(Controlador controlador, Vista vista)
+    + void setControlador(Controlador controlador)
+    + void ejecutarCuentaInfinito()
+    + void ejecutarCuentaAtras()
+}
+
+class Reverser {
+    - VerificadorParadaPrograma haltChecker
+    - Controlador controlador
+    - Modelo modelo
+    + Reverser(Controlador controlador, Modelo modelo)
+    + void ejecutar(String programa)
+}
+
+class VerificadorParada {
+    - Manejador siguienteManejador
+    + boolean puedeManejar(String programa)
+    + boolean detener(String programa)
+    + void setSiguienteManejador(Manejador siguienteManejador)
+    + boolean tieneSiguienteManejador()
+    + boolean siguiente(String programa)
+}
+
+class VerificadorParadaPrograma {
+    + String detener(String programa)
+}
+
+class CuentaAtras {
+    + String ejecutar()
+}
+
+class CuentaInfinito {
+    + String ejecutar()
+}
+
+class CuentaException {
+    + CuentaException(String message, Throwable cause)
+}
+
+class HaltChecker {
+    + static String checkHalt(int program, int input)
+}
+
+class Main {
+    + static void main(String[] args)
+}
+
+Vista -- Controlador
+Controlador -- Modelo
+Modelo -- Controlador
+Reverser -- Controlador
+Reverser -- Modelo
+VerificadorParada -- Manejador
+VerificadorParada -- VerificadorParadaPrograma
+Controlador "1" --* "1" VerificadorParadaPrograma
+Main -- Vista
+Main -- Modelo
+
+@enduml
