@@ -1,5 +1,6 @@
 # Proyecto de Controlador de Cuenta Atrás e Infinito
 Link repositorio: https://github.com/aalbertovalera48/Practica-Examen-4-Problema-Parar-Alberto-Valera.git
+
 Este proyecto implementa un sistema que simula una cuenta atrás y un conteo infinito, con una interfaz gráfica de usuario (GUI) desarrollada en Java con el uso de Swing. También incluye clases relacionadas con el controlador, el modelo y la vista del sistema.
 
 ## Funcionalidades
